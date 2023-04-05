@@ -40,6 +40,8 @@ export class AirQualityIndexComponent {
   ];
   dataSource: MatTableDataSource<AirQualityIndexModel>;
 
+  //test
+
   constructor(private airQualityIndexService: AirQualityIndexService) {
     this.pipe = new DatePipe('en');
 
