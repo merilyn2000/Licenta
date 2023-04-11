@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AirQualityIndexComponent } from './indexes/air-quality-index/air-quality-index.component';
@@ -15,6 +15,8 @@ import { AngularMaterialModule } from './shared/angular-material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AirQualityIndexMapComponent } from './maps/air-quality-map/air-quality-map.component';
+import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AirQualityIndexComponent,
     UvIndexComponent,
     DashboardComponent,
+    AirQualityIndexMapComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +36,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
 
-  providers: [AirQualityIndexService, UVIndexService, MatDatepickerModule],
+  providers: [AirQualityIndexService, UVIndexService, MatDatepickerModule, DatePipe, AirQualityMapService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -16,7 +16,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AirQualityIndexComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('TABLE',{ read: ElementRef }) table: ElementRef;
+  @ViewChild('TABLE', { read: ElementRef }) table: ElementRef;
 
   public pipe: DatePipe;
 
@@ -39,8 +39,6 @@ export class AirQualityIndexComponent {
     'imageUrl',
   ];
   dataSource: MatTableDataSource<AirQualityIndexModel>;
-
-  //test
 
   constructor(private airQualityIndexService: AirQualityIndexService) {
     this.pipe = new DatePipe('en');
