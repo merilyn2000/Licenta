@@ -12,19 +12,18 @@ import { AirQualityMapService } from './air-quality-map.service';
 })
 export class AirQualityIndexMapComponent implements AfterViewInit {
   private map: L.Map;
+  private lastRecordedValue: string;
+  private lastRecordedDate: Date;
 
-  constructor(
-    private airQualityIndexService: AirQualityIndexService,
-    private datepipe: DatePipe,
-    private airQualityMapService: AirQualityMapService
-  ) {}
-
-  lastRecordedValue: string;
-  lastRecordedDate: Date;
+  constructor(private airQualityMapService: AirQualityMapService) {}
 
   ngAfterViewInit(): void {
-    this.loadCircleMarkersForRealData();
     this.initMap();
+    this.airQualityMapService.loadCircleMarkersForRealData(
+      this.lastRecordedValue,
+      this.lastRecordedDate,
+      this.map
+    );
     this.airQualityMapService.loadCircleMarkersForMockData(this.map);
   }
 
@@ -41,47 +40,5 @@ export class AirQualityIndexMapComponent implements AfterViewInit {
     );
 
     titles.addTo(this.map);
-  }
-
-  private loadCircleMarkersForRealData() {
-    this.airQualityIndexService
-      .getAirQualityIndexData()
-      .subscribe((response) => {
-        let responseValues: string[] = [];
-        let responseDates: Date[] = [];
-
-        response.feeds.forEach((feed: any) => {
-          responseValues.push(feed.field4);
-          responseDates.push(feed.created_at);
-        });
-
-        this.lastRecordedValue = responseValues[responseValues.length - 1];
-        this.lastRecordedDate = new Date(
-          responseDates[responseDates.length - 1]
-        );
-
-        const circle = L.circleMarker([46.7784, 23.6172], {
-          radius: 50,
-          color: AirQualityMapHelper.getLevelColor(this.lastRecordedValue),
-          fillColor: AirQualityMapHelper.getLevelColor(this.lastRecordedValue),
-          fillOpacity: 0.8,
-        });
-
-        circle
-          .bindPopup('')
-          .setPopupContent(
-            `${AirQualityMapHelper.getLevelText(this.lastRecordedValue)}` +
-              '<hr>' +
-              AirQualityMapHelper.getLevelImage(this.lastRecordedValue) +
-              '<hr>' +
-              `<h3><strong>Last update : ${this.datepipe.transform(
-                this.lastRecordedDate,
-                'MMM d, y, h:mm:ss a'
-              )} </strong></h3>`
-          )
-          .openPopup();
-
-        circle.addTo(this.map);
-      });
   }
 }

@@ -12,32 +12,3 @@ export class AirQualityIndexService {
     );
   }
 }
-
-
-// public getAirQualityIndexData(
-//   dataSource: MatTableDataSource<AirQualityIndexModel>,
-//   fromDate: Date,
-//   toDate: Date,
-//   paginator: MatPaginator,
-//   sort: MatSort
-// ) {
-//   return this.http
-//     .get('https://api.thingspeak.com/channels/1974961/field/4.json')
-//     .subscribe((data: any) => {
-//       dataSource = new MatTableDataSource(data.feeds);
-
-//       dataSource.data.forEach(
-//         (x) => (x.created_at = new Date(x.created_at.toLocaleString()))
-//       );
-
-//       dataSource.filterPredicate = (data) => {
-//         if (fromDate && toDate) {
-//           return data.created_at >= fromDate && data.created_at <= toDate;
-//         }
-//         return true;
-//       };
-
-//       dataSource.paginator = paginator;
-//       dataSource.sort = sort;
-//     });
-// }

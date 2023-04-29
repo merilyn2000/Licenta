@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AirQualityIndexComponent } from './indexes/air-quality-index/air-quality-index.component';
 import { UvIndexComponent } from './indexes/uv-index/uv-index.component';
@@ -27,7 +26,6 @@ import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.ser
     AirQualityIndexMapComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -37,6 +35,7 @@ import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.ser
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NoopAnimationsModule,
   ],
 
   providers: [AirQualityIndexService, UVIndexService, MatDatepickerModule, DatePipe, AirQualityMapService],
