@@ -23,23 +23,38 @@
       <mat-datepicker #toDate></mat-datepicker>
     </mat-form-field>
   </div>
-  <button
-    style="margin-top: 10px"
-    mat-raised-button
-    color="primary"
-    (click)="applyFilter()"
-  >
-    Filter
-  </button>
 
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="ExportTOExcel()"
-    class="export-button"
-  >
-    Export as Excel
-  </button>
+  <div class="example-button-row">
+    <button
+      type="button"
+      mat-stroked-button
+      color="primary"
+      (click)="applyFilter()"
+      class="filter-button"
+    >
+      Filter
+    </button>
+
+    <button
+      mat-stroked-button
+      type="button"
+      color="primary"
+      (click)="ExportTOExcel()"
+      class="export-button"
+    >
+      <span> <mat-icon>file_download</mat-icon> Export as Excel</span>
+    </button>
+
+    <button
+      class="map-button"
+      type="button"
+      mat-stroked-button
+      color="primary"
+      (click)="goToQualityIndexMap()"
+    >
+      <span> <mat-icon>pin_drop</mat-icon> See data on the real time map</span>
+    </button>
+  </div>
 </form>
 
 <mat-card class="table-card" #TABLE>
@@ -135,6 +150,48 @@
               </div>
             </div>
             <div class="example-element-description">
+              <h2
+                *ngIf="+element.field4 >= 0 && +element.field4 < 50"
+                style="color: rgba(0, 128, 0)"
+              >
+                <strong>SAFE TO BE OUTSIDE ( no risk )</strong>
+              </h2>
+
+              <h2
+                *ngIf="+element.field4 > 50 && +element.field4 < 100"
+                style="color: #ffc107"
+              >
+                <strong>MODERATE RISK</strong>
+              </h2>
+
+              <h2
+                *ngIf="+element.field4 > 100 && +element.field4 < 150"
+                style="color: #ff8f00"
+              >
+                <strong>UNHEALTHY ( for sensitive groups )</strong>
+              </h2>
+
+              <h2
+                *ngIf="+element.field4 > 150 && +element.field4 < 200"
+                style="color: rgba(178, 34, 34)"
+              >
+                <strong>UNHEALTHY ( not recommended to be outside )</strong>
+              </h2>
+
+              <h2
+                *ngIf="+element.field4 > 200 && +element.field4 < 300"
+                style="color: rgba(255, 20, 147)"
+              >
+                <strong>VERY UNHEALTHY ( very dangerous to be outside )</strong>
+              </h2>
+
+              <h2
+                *ngIf="+element.field4 > 300"
+                style="color: rgba(128, 0, 128)"
+              >
+                <strong>HAZARDOUS ( forbidden to leave the house )</strong>
+              </h2>
+
               <h2>{{ getIndexesDescriptions(+element.field4) }}</h2>
             </div>
           </div>
@@ -158,7 +215,7 @@
 
     <mat-paginator
       class="paginator"
-      [pageSizeOptions]="[10, 25, 100]"
+      [pageSizeOptions]="[8, 10, 25, 100]"
       aria-label="Select page of users"
     ></mat-paginator>
   </mat-card-content>

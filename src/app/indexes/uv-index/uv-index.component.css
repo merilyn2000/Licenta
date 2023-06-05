@@ -1,0 +1,104 @@
+
+td, th {
+  width: 30%;
+}
+
+.date-block{
+  display: flex;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+.date-block__list{
+  flex-basis: 150px;
+  margin-right: 15px;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.filter-button {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-right: 370px;
+}
+
+.export-button {
+  font-size: 15px;
+  margin-right: 50px;
+}
+
+.map-button {
+  font-size: 15px;
+}
+
+.table-card {
+  width: 65%; margin-left: 250px
+}
+
+.paginator {
+  margin-top: 15px; 
+  background-color: lightgray
+}
+
+.index-img {
+  width: 150px; 
+  height: 100px
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 1000px;
+}
+
+.mat-icon {
+  vertical-align: middle
+}
+
+/* ::ng-deep.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail.ng-tns-c185-0.ng-star-inserted{
+  background-color:  rgb(240, 240, 240);
+} */
+
+.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail.ng-tns-c185-0.ng-star-inserted {
+  background-color:  rgb(240, 240, 240);
+}

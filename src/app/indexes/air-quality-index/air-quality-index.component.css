@@ -6,7 +6,7 @@ td, th {
 .date-block{
   display: flex;
   margin-top: 20px;
-  margin-left: 200px;
+  margin-left: 250px;
 }
 
 .date-block__list{
@@ -38,7 +38,6 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-diagram {
   min-width: 80px;
   border: 2px solid black;
-  padding: 8px;
   font-weight: lighter;
   margin: 8px 0;
   height: 104px;
@@ -58,13 +57,23 @@ tr.example-element-row:not(.example-expanded-row):active {
   opacity: 0.5;
 }
 
+.filter-button {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-right: 370px;
+}
+
 .export-button {
-  margin-top: 10px; 
-  margin-left: 465px
+  font-size: 15px;
+  margin-right: 50px;
+}
+
+.map-button {
+  font-size: 15px;
 }
 
 .table-card {
-  width: 65%; margin-left: 180px
+  width: 65%; margin-left: 250px
 }
 
 .paginator {
@@ -75,4 +84,17 @@ tr.example-element-row:not(.example-expanded-row):active {
 .index-img {
   width: 150px; 
   height: 100px
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 1000px;
+}
+
+.mat-icon {
+  vertical-align: middle
+}
+
+.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail.ng-tns-c184-0.ng-star-inserted{
+  background-color:  rgb(240, 240, 240);
 }

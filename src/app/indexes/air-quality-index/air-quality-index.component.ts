@@ -14,6 +14,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-air-quality-index',
@@ -59,7 +60,10 @@ export class AirQualityIndexComponent {
     return this.filterForm.get('toDate')?.value;
   }
 
-  constructor(private airQualityIndexService: AirQualityIndexService) {
+  constructor(
+    private airQualityIndexService: AirQualityIndexService,
+    private router: Router
+  ) {
     this.pipe = new DatePipe('en');
 
     this.airQualityIndexService.getAirQualityIndexData().subscribe((data) => {
@@ -134,5 +138,9 @@ export class AirQualityIndexComponent {
       return 'Health warnings of emergency conditions. The entire population is more likely to be affected';
     else
       return 'Health alert: everyone may experience more serios health effects';
+  }
+
+  public goToQualityIndexMap() {
+    this.router.navigate(['/air-quality-index-map']);
   }
 }

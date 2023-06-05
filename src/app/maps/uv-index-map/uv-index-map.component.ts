@@ -1,28 +1,28 @@
 import { AfterViewInit, Component } from '@angular/core';
 import * as L from 'leaflet';
-
-import { AirQualityMapService } from './air-quality-map.service';
+import { UvIndexService } from 'src/app/indexes/uv-index/uv-index.service';
+import { UvIndexMapService } from './uv-index-map.service';
 
 @Component({
-  selector: 'app-air-quality-map',
-  templateUrl: './air-quality-map.component.html',
-  styleUrls: ['./air-quality-map.component.css'],
+  selector: 'app-uv-index-map',
+  templateUrl: './uv-index-map.component.html',
+  styleUrls: ['./uv-index-map.component.css'],
 })
-export class AirQualityIndexMapComponent implements AfterViewInit {
+export class UvIndexMapComponent implements AfterViewInit {
   private map: L.Map;
   private lastRecordedValue: string;
   private lastRecordedDate: Date;
 
-  constructor(private airQualityMapService: AirQualityMapService) {}
+  constructor(private uvIndexMapService: UvIndexMapService) {}
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.airQualityMapService.loadCircleMarkersForRealData(
+    this.uvIndexMapService.loadCircleMarkersForRealData(
       this.lastRecordedValue,
       this.lastRecordedDate,
       this.map
     );
-    this.airQualityMapService.loadCircleMarkersForMockData(this.map);
+    this.uvIndexMapService.loadCircleMarkersForMockData(this.map);
   }
 
   private initMap() {

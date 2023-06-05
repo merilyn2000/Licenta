@@ -9,13 +9,15 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AirQualityIndexComponent } from './indexes/air-quality-index/air-quality-index.component';
 import { UvIndexComponent } from './indexes/uv-index/uv-index.component';
 import { AirQualityIndexService } from './indexes/air-quality-index/air-quality-index.service';
-import { UVIndexService } from './indexes/uv-index/uv-index.service';
+import { UvIndexService } from './indexes/uv-index/uv-index.service';
 import { AngularMaterialModule } from './shared/angular-material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AirQualityIndexMapComponent } from './maps/air-quality-map/air-quality-map.component';
 import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.service';
+import { UvIndexMapComponent } from './maps/uv-index-map/uv-index-map.component';
+import { UvIndexMapService } from './maps/uv-index-map/uv-index-map.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.ser
     UvIndexComponent,
     DashboardComponent,
     AirQualityIndexMapComponent,
+    UvIndexMapComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -38,7 +41,7 @@ import { AirQualityMapService } from './maps/air-quality-map/air-quality-map.ser
     NoopAnimationsModule,
   ],
 
-  providers: [AirQualityIndexService, UVIndexService, MatDatepickerModule, DatePipe, AirQualityMapService],
+  providers: [AirQualityIndexService, UvIndexService, MatDatepickerModule, DatePipe, AirQualityMapService, UvIndexMapService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

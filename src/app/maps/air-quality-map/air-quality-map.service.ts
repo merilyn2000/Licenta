@@ -36,7 +36,7 @@ export class AirQualityMapService {
           color: AirQualityMapHelper.getQualityIndexColor(lastRecordedValue),
           fillColor:
             AirQualityMapHelper.getQualityIndexColor(lastRecordedValue),
-          fillOpacity: 0.6,
+          fillOpacity: 0.4,
         });
 
         const popupContent =
@@ -53,10 +53,7 @@ export class AirQualityMapService {
             )}
           </h4>`;
 
-        circle
-          .bindPopup(popupContent, { className: 'custom-popup-content' })
-          .openPopup()
-          .addTo(map);
+        circle.bindPopup(popupContent).openPopup().addTo(map);
       });
   }
 
