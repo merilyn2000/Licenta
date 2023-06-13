@@ -10,18 +10,12 @@ import { UvIndexMapService } from './uv-index-map.service';
 })
 export class UvIndexMapComponent implements AfterViewInit {
   private map: L.Map;
-  private lastRecordedValue: string;
-  private lastRecordedDate: Date;
 
   constructor(private uvIndexMapService: UvIndexMapService) {}
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.uvIndexMapService.loadCircleMarkersForRealData(
-      this.lastRecordedValue,
-      this.lastRecordedDate,
-      this.map
-    );
+    this.uvIndexMapService.loadCircleMarkersForRealData(this.map);
     this.uvIndexMapService.loadCircleMarkersForMockData(this.map);
   }
 

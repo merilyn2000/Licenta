@@ -11,11 +11,7 @@ export class UvIndexMapService {
     private uvIndexService: UvIndexService
   ) {}
 
-  public loadCircleMarkersForRealData(
-    lastRecordedValue: string,
-    lastRecordedDate: Date,
-    map: L.Map
-  ) {
+  public loadCircleMarkersForRealData(map: L.Map) {
     this.uvIndexService.getUvIndexData().subscribe((response) => {
       let responseValues: string[] = [];
       let responseDates: Date[] = [];
@@ -25,8 +21,10 @@ export class UvIndexMapService {
         responseDates.push(feed.created_at);
       });
 
-      lastRecordedValue = responseValues[responseValues.length - 1];
-      lastRecordedDate = new Date(responseDates[responseDates.length - 1]);
+      const lastRecordedValue = responseValues[responseValues.length - 1];
+      const lastRecordedDate = new Date(
+        responseDates[responseDates.length - 1]
+      );
 
       const circle = L.circle([46.7784, 23.6172], {
         radius: 5000,

@@ -33,18 +33,9 @@ import { Router } from '@angular/router';
 })
 export class AirQualityIndexComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('TABLE', { read: ElementRef }) table: ElementRef;
 
   public dataSource: MatTableDataSource<AirQualityIndexModel>;
   public expandedElement: AirQualityIndexModel | undefined;
-
-  public pipe: DatePipe;
-
-  public filterForm = new FormGroup({
-    fromDate: new FormControl(),
-    toDate: new FormControl(),
-  });
 
   public readonly displayedColumns: string[] = [
     'entry_id',
@@ -52,6 +43,11 @@ export class AirQualityIndexComponent {
     'field4',
   ];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+
+  public filterForm = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
 
   public get fromDate(): Date {
     return this.filterForm.get('fromDate')?.value;
@@ -64,9 +60,13 @@ export class AirQualityIndexComponent {
     private airQualityIndexService: AirQualityIndexService,
     private router: Router
   ) {
-    this.pipe = new DatePipe('en');
-
     this.airQualityIndexService.getAirQualityIndexData().subscribe((data) => {
+      data.feeds.sort((a: any, b: any) => {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      });
+
       this.dataSource = new MatTableDataSource(data.feeds);
 
       this.dataSource.data.forEach(
@@ -83,7 +83,6 @@ export class AirQualityIndexComponent {
       };
 
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
   }
 

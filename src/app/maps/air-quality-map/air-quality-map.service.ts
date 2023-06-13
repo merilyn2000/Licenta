@@ -12,11 +12,7 @@ export class AirQualityMapService {
     private airQualityIndexService: AirQualityIndexService
   ) {}
 
-  public loadCircleMarkersForRealData(
-    lastRecordedValue: string,
-    lastRecordedDate: Date,
-    map: L.Map
-  ) {
+  public loadCircleMarkersForRealData(map: L.Map) {
     this.airQualityIndexService
       .getAirQualityIndexData()
       .subscribe((response) => {
@@ -28,8 +24,10 @@ export class AirQualityMapService {
           responseDates.push(feed.created_at);
         });
 
-        lastRecordedValue = responseValues[responseValues.length - 1];
-        lastRecordedDate = new Date(responseDates[responseDates.length - 1]);
+        const lastRecordedValue = responseValues[responseValues.length - 1];
+        const lastRecordedDate = new Date(
+          responseDates[responseDates.length - 1]
+        );
 
         const circle = L.circleMarker([46.7784, 23.6172], {
           radius: 50,

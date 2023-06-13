@@ -1,9 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UvIndexModel } from './uv-index.model';
-import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UvIndexService } from './uv-index.service';
 import * as XLSX from 'xlsx';
@@ -33,25 +31,21 @@ import { Router } from '@angular/router';
 })
 export class UvIndexComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('TABLE', { read: ElementRef }) table: ElementRef;
 
   public dataSource: MatTableDataSource<UvIndexModel>;
   public expandedElement: UvIndexModel | undefined;
-
-  public pipe: DatePipe;
-
-  public filterForm = new FormGroup({
-    fromDate: new FormControl(),
-    toDate: new FormControl(),
-  });
 
   public readonly displayedColumns: string[] = [
     'entry_id',
     'created_at',
     'field3',
   ];
-  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+  columnsToDisplayWithExpand: string[] = [...this.displayedColumns, 'expand'];
+
+  public filterForm = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
 
   public get fromDate(): Date {
     return this.filterForm.get('fromDate')?.value;
@@ -61,9 +55,13 @@ export class UvIndexComponent {
   }
 
   constructor(private uvIndexService: UvIndexService, private router: Router) {
-    this.pipe = new DatePipe('en');
-
     this.uvIndexService.getUvIndexData().subscribe((data) => {
+      data.feeds.sort((a: any, b: any) => {
+        return (
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+      });
+
       this.dataSource = new MatTableDataSource(data.feeds);
 
       this.dataSource.data.forEach(
@@ -80,7 +78,6 @@ export class UvIndexComponent {
       };
 
       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
     });
   }
 

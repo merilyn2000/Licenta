@@ -4,7 +4,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
 
 import { AirQualityIndexComponent } from './indexes/air-quality-index/air-quality-index.component';
 import { UvIndexComponent } from './indexes/uv-index/uv-index.component';
@@ -27,6 +30,7 @@ import { UvIndexMapService } from './maps/uv-index-map/uv-index-map.service';
     DashboardComponent,
     AirQualityIndexMapComponent,
     UvIndexMapComponent,
+    DashboardComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -41,7 +45,14 @@ import { UvIndexMapService } from './maps/uv-index-map/uv-index-map.service';
     NoopAnimationsModule,
   ],
 
-  providers: [AirQualityIndexService, UvIndexService, MatDatepickerModule, DatePipe, AirQualityMapService, UvIndexMapService],
+  providers: [
+    AirQualityIndexService,
+    UvIndexService,
+    MatDatepickerModule,
+    DatePipe,
+    AirQualityMapService,
+    UvIndexMapService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -17,11 +17,7 @@ export class AirQualityIndexMapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.airQualityMapService.loadCircleMarkersForRealData(
-      this.lastRecordedValue,
-      this.lastRecordedDate,
-      this.map
-    );
+    this.airQualityMapService.loadCircleMarkersForRealData(this.map);
     this.airQualityMapService.loadCircleMarkersForMockData(this.map);
   }
 
