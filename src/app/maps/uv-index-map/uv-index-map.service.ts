@@ -28,17 +28,17 @@ export class UvIndexMapService {
 
       const circle = L.circle([46.7784, 23.6172], {
         radius: 5000,
-        color: UvIndexMapHelper.getQualityIndexColor(lastRecordedValue),
-        fillColor: UvIndexMapHelper.getQualityIndexColor(lastRecordedValue),
+        color: UvIndexMapHelper.getUVIndexColor(lastRecordedValue),
+        fillColor: UvIndexMapHelper.getUVIndexColor(lastRecordedValue),
         fillOpacity: 0.6,
       });
 
       const popupContent =
-        `${UvIndexMapHelper.getQualityIndexText(lastRecordedValue)}` +
+        `${UvIndexMapHelper.getUVIndexText(lastRecordedValue)}` +
         '<hr>' +
-        UvIndexMapHelper.getQualityIndexImage(lastRecordedValue) +
+        UvIndexMapHelper.getUVIndexImage(lastRecordedValue) +
         '<hr>' +
-        UvIndexMapHelper.getQualityIndexDescription(lastRecordedValue) +
+        UvIndexMapHelper.getUVIndexDescription(lastRecordedValue) +
         '<hr>' +
         `<h4>
             Last update : ${this.datepipe.transform(
@@ -54,17 +54,17 @@ export class UvIndexMapService {
   public loadCircleMarkersForMockData(map: L.Map) {
     L.circle([46.65, 23.62], {
       radius: 5000,
-      color: UvIndexMapHelper.getQualityIndexColor('3'),
-      fillColor: UvIndexMapHelper.getQualityIndexColor('3'),
+      color: UvIndexMapHelper.getUVIndexColor('3'),
+      fillColor: UvIndexMapHelper.getUVIndexColor('3'),
       fillOpacity: 0.6,
     })
       .bindPopup('')
       .setPopupContent(
-        `${UvIndexMapHelper.getQualityIndexText('3')}` +
+        `${UvIndexMapHelper.getUVIndexText('3')}` +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexImage('3') +
+          UvIndexMapHelper.getUVIndexImage('3') +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexDescription('3') +
+          UvIndexMapHelper.getUVIndexDescription('3') +
           '<hr>' +
           `<h3>Last update : ${this.datepipe.transform(
             new Date(),
@@ -76,17 +76,17 @@ export class UvIndexMapService {
 
     L.circle([46.33, 23.6172], {
       radius: 5000,
-      color: UvIndexMapHelper.getQualityIndexColor('6'),
-      fillColor: UvIndexMapHelper.getQualityIndexColor('6'),
+      color: UvIndexMapHelper.getUVIndexColor('6'),
+      fillColor: UvIndexMapHelper.getUVIndexColor('6'),
       fillOpacity: 0.6,
     })
       .bindPopup('')
       .setPopupContent(
-        `${UvIndexMapHelper.getQualityIndexText('6')}` +
+        `${UvIndexMapHelper.getUVIndexText('6')}` +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexImage('6') +
+          UvIndexMapHelper.getUVIndexImage('6') +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexDescription('6') +
+          UvIndexMapHelper.getUVIndexDescription('6') +
           '<hr>' +
           `<h3>Last update : ${this.datepipe.transform(
             new Date(),
@@ -98,17 +98,17 @@ export class UvIndexMapService {
 
     L.circle([46.773, 23.22], {
       radius: 5000,
-      color: UvIndexMapHelper.getQualityIndexColor('8'),
-      fillColor: UvIndexMapHelper.getQualityIndexColor('8'),
+      color: UvIndexMapHelper.getUVIndexColor('8'),
+      fillColor: UvIndexMapHelper.getUVIndexColor('8'),
       fillOpacity: 0.6,
     })
       .bindPopup('')
       .setPopupContent(
-        `${UvIndexMapHelper.getQualityIndexText('8')}` +
+        `${UvIndexMapHelper.getUVIndexText('8')}` +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexImage('8') +
+          UvIndexMapHelper.getUVIndexImage('8') +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexDescription('8') +
+          UvIndexMapHelper.getUVIndexDescription('8') +
           '<hr>' +
           `<h3>Last update : ${this.datepipe.transform(
             new Date(),
@@ -120,17 +120,17 @@ export class UvIndexMapService {
 
     L.circle([46.55, 23.7], {
       radius: 5000,
-      color: UvIndexMapHelper.getQualityIndexColor('11'),
-      fillColor: UvIndexMapHelper.getQualityIndexColor('11'),
+      color: UvIndexMapHelper.getUVIndexColor('11'),
+      fillColor: UvIndexMapHelper.getUVIndexColor('11'),
       fillOpacity: 0.6,
     })
       .bindPopup('')
       .setPopupContent(
-        `${UvIndexMapHelper.getQualityIndexText('11')}` +
+        `${UvIndexMapHelper.getUVIndexText('11')}` +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexImage('11') +
+          UvIndexMapHelper.getUVIndexImage('11') +
           '<hr>' +
-          UvIndexMapHelper.getQualityIndexDescription('11') +
+          UvIndexMapHelper.getUVIndexDescription('11') +
           '<hr>' +
           `<h3>Last update : ${this.datepipe.transform(
             new Date(),

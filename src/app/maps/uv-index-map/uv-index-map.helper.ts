@@ -1,5 +1,5 @@
 export class UvIndexMapHelper {
-  static getQualityIndexColor(lastData: string): string {
+  static getUVIndexColor(lastData: string): string {
     if (+lastData >= 0 && +lastData <= 2) {
       return 'green';
     } else if (+lastData >= 3 && +lastData <= 5) {
@@ -13,7 +13,7 @@ export class UvIndexMapHelper {
     }
   }
 
-  static getQualityIndexText(lastData: string): string {
+  static getUVIndexText(lastData: string): string {
     if (+lastData >= 0 && +lastData <= 2) {
       return `<center style="background-color: rgba(0,255,0, 0.4)">
                   <h1> UV index value : </h1>
@@ -42,25 +42,25 @@ export class UvIndexMapHelper {
     }
   }
 
-  static getQualityIndexImage(lastData: string): string {
+  static getUVIndexImage(lastData: string): string {
     if (+lastData >= 0 && +lastData <= 2) {
       return `<center>
       <h2
-                  
+
                   style="color: green"
                 >
                   <strong>NO PROTECTION REQUIRED</strong>
                 </h2><img src="/assets/images/low.png" height="150px" width="200px"/></center>`;
     } else if (+lastData >= 3 && +lastData <= 5) {
       return `<center><h2
-      
+
       style="color: coral"
     >
       <strong>PROTECTION REQUIRED</strong>
     </h2><img src="/assets/images/moderate.png" height="150px" width="200px"/></center>`;
     } else if (+lastData >= 6 && +lastData <= 7) {
       return `<center><h2
-      
+
       style="color: coral"
     >
       <strong>PROTECTION REQUIRED</strong>
@@ -80,7 +80,7 @@ export class UvIndexMapHelper {
     }
   }
 
-  static getQualityIndexDescription(lastData: string): string {
+  static getUVIndexDescription(lastData: string): string {
     if (+lastData >= 0 && +lastData <= 2)
       return '<h3><strong>Unless outdoors for extended periods, or near reflective surfaces such as snow or water.</h3></strong>';
     else if (+lastData >= 3 && +lastData <= 5)
